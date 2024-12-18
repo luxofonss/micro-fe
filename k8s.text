@@ -1,0 +1,11 @@
+với bare-metal clusters, không dùng trên cloud svc như aws, gc, azure
+khi tạo svc trên k8s thì external ip luôn ở trạng thái pending -> tại sao?
+
+nguyên nhân à k8s không cung cấp network loadbalancer implementation
+môi trường cloud -> được cung cấp bởi dịch vụ cloud. khi có svc kiểu LB -> external ip sẽ được network lb implementation của LB assign 1 api adrress
+
+vậy bare-metal cluster thì sao?
+
+MetalLB -> dự án giúp cung cấp network lb impl trên 1 bare-metal cluster
+
+internet -> router -> LB (MetalLB) -> Ingres (nginx) -> pods
